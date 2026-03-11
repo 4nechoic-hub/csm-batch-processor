@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csm-processor"
+version = "1.0.0"
+description = "Cross-Spectral Matrix Batch Processor — Python port of MATLAB CSM app"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Tingyi Zhang"},
+]
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "matplotlib>=3.5",
+]
+
+[project.optional-dependencies]
+tdms = ["npTDMS>=1.5"]
+hdf5 = ["h5py>=3.0"]
+all = ["npTDMS>=1.5", "h5py>=3.0"]
+
+[project.scripts]
+csm-processor = "csm_processor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["csm_processor*"]

@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+csm_processor.egg-info/PKG-INFO
+csm_processor.egg-info/SOURCES.txt
+csm_processor.egg-info/dependency_links.txt
+csm_processor.egg-info/entry_points.txt
+csm_processor.egg-info/requires.txt
+csm_processor.egg-info/top_level.txt
