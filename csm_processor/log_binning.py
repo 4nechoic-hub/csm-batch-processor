@@ -1,7 +1,7 @@
 """
 Logarithmic Frequency Binning
 ===============================
-Port of logfnan.m — combines narrowband spectral bins into fractional-octave
+Combines narrowband spectral bins into fractional-octave
 (logarithmically spaced) bands.
 
 Parameters

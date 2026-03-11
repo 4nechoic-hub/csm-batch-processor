@@ -56,7 +56,6 @@ def csm_calculator(
         )
 
     # --- Hanning window (periodic, energy-normalised) -------------------------
-    # MATLAB: hanning(N,'periodic') / sqrt(0.375)
     window = np.hanning(n_rec + 1)[:-1]  # periodic Hanning
     window /= np.sqrt(0.375)  # energy normalisation
 
@@ -70,7 +69,6 @@ def csm_calculator(
         S = np.fft.fft(block, axis=0)  # (n_rec, M)
 
         # Outer product at each frequency: csm[f, i, j] = S[f,i] * conj(S[f,j])
-        # Equivalent to the MATLAB reshape + permute + element-wise multiply
         csm_sum += S[:, :, np.newaxis] * np.conj(S[:, np.newaxis, :])
 
     spectra = 2.0 * csm_sum / (n_rec * fs * n_blocks)

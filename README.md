@@ -1,12 +1,12 @@
-# CSM Batch Processor — Python Edition
+# CSM Batch Processor
 
 [![CI](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
-**Cross-Spectral Matrix calculator and spectral analysis toolkit with ML-based anomaly detection**, ported from MATLAB App Designer.
+**Cross-Spectral Matrix calculator and spectral analysis toolkit with ML-based anomaly detection.**
 
-Computes narrowband cross-spectral matrices from multi-channel time-series data using Welch's block-averaging method with Hanning windowing. Includes a feature extraction and unsupervised anomaly detection pipeline for spectral monitoring applications.
+A Python package for computing narrowband cross-spectral matrices from multi-channel time-series data using Welch's block-averaging method. Designed for aeroacoustic monitoring, structural health assessment, and any domain where spectral signatures carry diagnostic value. Includes a full feature extraction and unsupervised anomaly detection pipeline.
 
 ---
 
@@ -15,12 +15,12 @@ Computes narrowband cross-spectral matrices from multi-channel time-series data 
 | Feature | Description |
 |---|---|
 | **Narrowband CSM** | Welch-style block-averaged cross-spectral matrix with configurable overlap and record length |
-| **Octave-band binning** | Fractional-octave frequency binning (1/3, 1/12, etc.) via `logfnan` algorithm |
+| **Octave-band binning** | Fractional-octave frequency binning (1/3, 1/12, etc.) |
 | **Correlation** | Normalised auto- and cross-correlation for all channel pairs |
 | **Feature extraction** | 63 ML-ready spectral features per snapshot (broadband stats, band energies, coherence) |
 | **Anomaly detection** | Unsupervised detection via Isolation Forest, Mahalanobis distance, and Local Outlier Factor |
 | **Visualisation** | Publication-quality spectral, coherence, correlation, and anomaly plots |
-| **Multi-format I/O** | Reads CSV, MATLAB `.mat` (v5–v7.3), and NI TDMS files |
+| **Multi-format I/O** | Reads CSV, `.mat` (v5–v7.3), and NI TDMS files |
 | **Batch CLI** | Process multiple files from the command line |
 | **React GUI** | Interactive browser-based demo for quick analysis |
 
@@ -36,10 +36,9 @@ pip install -e ".[tdms]"
 pip install -e ".[all]"
 ```
 
-## Quick Start — Python API
+## Quick Start
 
 ```python
-import numpy as np
 from csm_processor import csm_calculator, load_data, plot_autospectra
 
 # Load data (CSV, MAT, or TDMS)
@@ -95,7 +94,7 @@ Time-series data → CSM → Feature Extraction (63 features) → Anomaly Detect
 
 ```python
 from csm_processor import (
-    csm_calculator, extract_features_batch,
+    csm_calculator, load_data, extract_features_batch,
     SpectralAnomalyDetector, plot_anomaly_scores,
 )
 
@@ -183,7 +182,7 @@ python -m csm_processor data.csv --fs 51200 --nrec 4096 --overlap 50 --plot
 python -m csm_processor *.tdms --fs 51200 --nrec 4096 \
     --bin --bpo 3 --correlation --plot --outdir results/
 
-# Save as .mat (MATLAB-compatible)
+# Save as .mat compatible format
 python -m csm_processor data.csv --fs 51200 --nrec 4096 --fmt mat
 ```
 
@@ -194,8 +193,8 @@ csm_processor/
 ├── __init__.py              # Public API
 ├── __main__.py              # python -m entry
 ├── cli.py                   # Batch CLI
-├── csm_calculator.py        # Core CSM engine (port of CSM_Calculator.m)
-├── log_binning.py           # Fractional-octave binning (port of logfnan.m)
+├── csm_calculator.py        # Core CSM engine
+├── log_binning.py           # Fractional-octave binning
 ├── correlation.py           # Auto/cross-correlation
 ├── feature_extraction.py    # ML-ready spectral feature extraction
 ├── anomaly_detection.py     # Unsupervised anomaly detection (IF, Mahalanobis, LOF)
@@ -213,17 +212,6 @@ The algorithm follows Welch's method:
 3. **FFT** each windowed block per channel
 4. **Outer product** at each frequency: `CSM[f,i,j] = S[f,i] × conj(S[f,j])`
 5. **Average** across all blocks and normalise: `CSM = 2·Σ / (n_rec · fs · n_blocks)`
-
-This is a direct port of the original MATLAB `CSM_Calculator.m` function.
-
-## Input Parameters
-
-| Python|
-|---|
-| `csm_calculator(data, fs, n_rec, overlap)` |
-| `log_freq_bin(df, spectrum, bins_per_octave)` |
-| `compute_correlation(data, fs)` |
-| `spectra[:, i, j]` |
 
 ## Testing
 
@@ -247,4 +235,4 @@ Results are saved as `.npz` (default) or `.mat` files containing:
 
 MIT
 
-This project is released for portfolio and educational purposes by Tingyi Zhang.
+This project is released for portfolio and educational purposes by 4nechoic.
