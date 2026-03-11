@@ -113,14 +113,14 @@ The algorithm follows Welch's method:
 
 This is a direct port of the original MATLAB `CSM_Calculator.m` function.
 
-## MATLAB Equivalence
+## Input Parameters
 
-| MATLAB (original) | Python (this package) |
-|---|---|
-| `CSM_Calculator(data, M, fs, N, Nrec, overlap)` | `csm_calculator(data, fs, n_rec, overlap)` |
-| `logfnan(df, g, d)` | `log_freq_bin(df, spectrum, bins_per_octave)` |
-| `xcorr(x, y, 'normalized')` | `compute_correlation(data, fs)` |
-| `spectra(:,i,j)` | `spectra[:, i, j]` |
+| Python (this package) |
+|---|
+| `csm_calculator(data, fs, n_rec, overlap)` |
+| `log_freq_bin(df, spectrum, bins_per_octave)` |
+| `compute_correlation(data, fs)` |
+| `spectra[:, i, j]` |
 
 ## Output Format
 
@@ -134,4 +134,4 @@ Results are saved as `.npz` (default) or `.mat` files containing:
 
 ## License
 
-MIT
+his project is released for portfolio and educational purposes by Tingyi Zhang.
