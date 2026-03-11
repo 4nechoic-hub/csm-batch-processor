@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "csm-processor"
-version = "1.0.0"
-description = "Cross-Spectral Matrix Batch Processor — Python port of MATLAB CSM app"
+version = "1.1.0"
+description = "Cross-Spectral Matrix Batch Processor with anomaly detection — Python port of MATLAB CSM app"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
@@ -16,6 +16,7 @@ dependencies = [
     "numpy>=1.21",
     "scipy>=1.7",
     "matplotlib>=3.5",
+    "scikit-learn>=1.0",
 ]
 
 [project.optional-dependencies]

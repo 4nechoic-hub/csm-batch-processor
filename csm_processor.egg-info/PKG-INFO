@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: csm-processor
-Version: 1.0.0
-Summary: Cross-Spectral Matrix Batch Processor — Python port of MATLAB CSM app
+Version: 1.1.0
+Summary: Cross-Spectral Matrix Batch Processor with anomaly detection — Python port of MATLAB CSM app
 Author: Tingyi Zhang
 License: MIT
 Requires-Python: >=3.9
@@ -9,6 +9,7 @@ Description-Content-Type: text/markdown
 Requires-Dist: numpy>=1.21
 Requires-Dist: scipy>=1.7
 Requires-Dist: matplotlib>=3.5
+Requires-Dist: scikit-learn>=1.0
 Provides-Extra: tdms
 Requires-Dist: npTDMS>=1.5; extra == "tdms"
 Provides-Extra: hdf5
@@ -132,14 +133,14 @@ The algorithm follows Welch's method:
 
 This is a direct port of the original MATLAB `CSM_Calculator.m` function.
 
-## MATLAB Equivalence
+## Input Parameters
 
-| MATLAB (original) | Python (this package) |
-|---|---|
-| `CSM_Calculator(data, M, fs, N, Nrec, overlap)` | `csm_calculator(data, fs, n_rec, overlap)` |
-| `logfnan(df, g, d)` | `log_freq_bin(df, spectrum, bins_per_octave)` |
-| `xcorr(x, y, 'normalized')` | `compute_correlation(data, fs)` |
-| `spectra(:,i,j)` | `spectra[:, i, j]` |
+| Python (this package) |
+|---|
+| `csm_calculator(data, fs, n_rec, overlap)` |
+| `log_freq_bin(df, spectrum, bins_per_octave)` |
+| `compute_correlation(data, fs)` |
+| `spectra[:, i, j]` |
 
 ## Output Format
 
@@ -153,4 +154,4 @@ Results are saved as `.npz` (default) or `.mat` files containing:
 
 ## License
 
-MIT
+This project is released for portfolio and educational purposes by Tingyi Zhang.
