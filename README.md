@@ -218,7 +218,7 @@ This is a direct port of the original MATLAB `CSM_Calculator.m` function.
 
 ## Input Parameters
 
-| Python (this package) |
+| Python|
 |---|
 | `csm_calculator(data, fs, n_rec, overlap)` |
 | `log_freq_bin(df, spectrum, bins_per_octave)` |
@@ -244,5 +244,7 @@ Results are saved as `.npz` (default) or `.mat` files containing:
 - `tau`, `corr_matrix` — (if `--correlation` used)
 
 ## License
+
+MIT
 
 This project is released for portfolio and educational purposes by Tingyi Zhang.
