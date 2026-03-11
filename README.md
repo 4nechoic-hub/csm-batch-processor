@@ -134,4 +134,4 @@ Results are saved as `.npz` (default) or `.mat` files containing:
 
 ## License
 
-his project is released for portfolio and educational purposes by Tingyi Zhang.
+This project is released for portfolio and educational purposes by Tingyi Zhang.
