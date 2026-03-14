@@ -19,7 +19,7 @@ A Python package for computing narrowband cross-spectral matrices from multi-cha
 | **Correlation** | Normalised auto- and cross-correlation for all channel pairs |
 | **Feature extraction** | 63 ML-ready spectral features per snapshot (broadband stats, band energies, coherence) |
 | **Anomaly detection** | Unsupervised detection via Isolation Forest, Mahalanobis distance, and Local Outlier Factor |
-| **Visualisation** | Publication-quality spectral, coherence, correlation, and anomaly plots |
+| **Visualisation** | Publication-quality spectral, coherence, correlation, CSM matrix, and anomaly plots (Acoular-inspired style) |
 | **Multi-format I/O** | Reads CSV, `.mat` (v5–v7.3), and NI TDMS files |
 | **Batch CLI** | Process multiple files from the command line |
 | **React GUI** | Interactive browser-based demo for quick analysis |
@@ -142,21 +142,37 @@ for method, result in results.items():
 
 The included demo (`examples/anomaly_demo.py`) simulates a 3-microphone array monitoring flow over an airfoil. Normal conditions produce broadband turbulent boundary layer noise with a tonal trailing edge peak at 2 kHz. Anomalous conditions (flow separation) introduce a spectral hump at 800 Hz, elevated broadband levels, and loss of inter-channel coherence.
 
-**Normal vs anomalous spectra** — the spectral signature change is clearly visible:
+All figures use a unified publication-quality style inspired by the [Acoular](https://www.acoular.org/auto_examples/) example gallery.
+
+**Normal vs anomalous spectra** — mean ± 1σ envelopes with annotated spectral features (separation hump at 800 Hz, trailing edge tone at 2 kHz):
 
 ![Normal vs Anomalous Spectra](examples/output/normal_vs_anomaly_spectra.png)
 
-**Anomaly scores** — Isolation Forest cleanly separates normal from anomalous snapshots (93.8% accuracy):
+**CSM magnitude heatmaps** — cross-spectral matrix at 800 Hz for normal (left) and anomalous (right) conditions, showing the energy redistribution during flow separation:
+
+| Normal | Anomalous |
+|:---:|:---:|
+| ![CSM Normal](examples/output/csm_matrix_normal.png) | ![CSM Anomaly](examples/output/csm_matrix_anomaly.png) |
+
+**Coherence matrix comparison** — γ² at the tonal frequency (2 kHz) drops measurably under anomalous conditions, reflecting the loss of spatial coherence during separation:
+
+![Coherence Matrix](examples/output/coherence_matrix_comparison.png)
+
+**Anomaly scores** — Isolation Forest cleanly separates normal from anomalous snapshots (93.8% accuracy). Shaded zones indicate the normal (blue) and anomaly (red) regions:
 
 ![Anomaly Scores](examples/output/anomaly_scores.png)
 
-**Feature importance** — band energy features dominate, consistent with the broadband energy shift during flow separation:
+**Feature importance** — band energy features dominate (purple), consistent with the broadband energy shift during flow separation. Bars are coloured by feature category:
 
 ![Feature Importance](examples/output/feature_importance.png)
 
-**Method comparison** — all three detectors side by side:
+**Method comparison** — all three detectors with normalised scores on a shared [0, 1] axis for fair visual comparison:
 
 ![Method Comparison](examples/output/method_comparison.png)
+
+**Detection performance** — precision, recall, and F1 across all methods. Isolation Forest and LOF achieve identical F1 = 0.92:
+
+![Detection Summary](examples/output/detection_summary.png)
 
 Run it yourself:
 
@@ -198,9 +214,10 @@ csm_processor/
 ├── correlation.py           # Auto/cross-correlation
 ├── feature_extraction.py    # ML-ready spectral feature extraction
 ├── anomaly_detection.py     # Unsupervised anomaly detection (IF, Mahalanobis, LOF)
-├── anomaly_plotting.py      # Anomaly visualisation
+├── style.py                 # Unified publication-quality style (Acoular-inspired)
+├── anomaly_plotting.py      # Anomaly visualisation (scores, importance, spectra, summary)
 ├── io_utils.py              # CSV / MAT / TDMS loaders + save helpers
-└── plotting.py              # Matplotlib visualisation
+└── plotting.py              # Spectral, correlation, CSM matrix, coherence matrix plots
 ```
 
 ### CSM Computation — How It Works

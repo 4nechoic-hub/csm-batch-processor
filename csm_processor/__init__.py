@@ -26,15 +26,18 @@ from .plotting import (
     plot_cross_spectra,
     plot_coherence,
     plot_correlation,
+    plot_csm_matrix,
+    plot_coherence_matrix,
 )
 from .anomaly_plotting import (
     plot_anomaly_scores,
     plot_feature_importance,
     plot_anomaly_spectra,
     plot_method_comparison,
+    plot_detection_summary,
 )
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __all__ = [
     "csm_calculator",
     "log_freq_bin",
@@ -49,8 +52,11 @@ __all__ = [
     "plot_cross_spectra",
     "plot_coherence",
     "plot_correlation",
+    "plot_csm_matrix",
+    "plot_coherence_matrix",
     "plot_anomaly_scores",
     "plot_feature_importance",
     "plot_anomaly_spectra",
     "plot_method_comparison",
+    "plot_detection_summary",
 ]
