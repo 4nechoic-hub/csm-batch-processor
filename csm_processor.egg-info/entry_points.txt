@@ -1,2 +1,0 @@
-[console_scripts]
-csm-processor = csm_processor.cli:main

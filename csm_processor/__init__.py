@@ -37,8 +37,9 @@ from .anomaly_plotting import (
     plot_detection_summary,
 )
 
-__version__ = "1.2.0"
+from ._version import __version__
 __all__ = [
+    "__version__",
     "csm_calculator",
     "log_freq_bin",
     "compute_correlation",

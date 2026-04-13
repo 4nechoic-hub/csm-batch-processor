@@ -30,13 +30,19 @@ from .log_binning import bin_csm
 from .correlation import compute_correlation
 from .io_utils import load_data, save_results
 from .plotting import plot_autospectra, plot_coherence, plot_correlation
-
+from ._version import __version__
 
 def _parse_args(argv=None):
     p = argparse.ArgumentParser(
-        prog="csm_processor",
+        prog="csm-processor",
         description="Cross-Spectral Matrix Batch Processor",
     )
+    p.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+    )
+
     p.add_argument("files", nargs="+", help="Input file(s) — CSV, MAT, or TDMS")
     p.add_argument("--fs", type=float, required=True, help="Sampling rate (Hz)")
     p.add_argument("--nrec", type=int, required=True, help="Record length (samples per block)")
@@ -44,13 +50,10 @@ def _parse_args(argv=None):
     p.add_argument("--var", type=str, default=None, help="Variable name in MAT file")
     p.add_argument("--outdir", type=str, default=".", help="Output directory")
     p.add_argument("--fmt", choices=["npz", "mat"], default="npz", help="Output format")
-
     p.add_argument("--bin", action="store_true", help="Apply octave-band binning")
     p.add_argument("--bpo", type=int, default=3, help="Bins per octave (default: 3)")
-
     p.add_argument("--correlation", action="store_true", help="Compute auto/cross-correlation")
     p.add_argument("--plot", action="store_true", help="Generate spectral plots")
-
     return p.parse_args(argv)
 
 
@@ -58,13 +61,17 @@ def main(argv=None):
     args = _parse_args(argv)
     os.makedirs(args.outdir, exist_ok=True)
 
-    # Expand globs on Windows
     files = []
     for pattern in args.files:
         expanded = glob.glob(pattern)
         files.extend(expanded if expanded else [pattern])
 
-    print(f"CSM Batch Processor v1.0")
+    # add this block here
+    missing = [f for f in files if not os.path.exists(f)]
+    if missing:
+        raise SystemExit(f"Input file(s) not found: {', '.join(missing)}")
+
+    print(f"CSM Batch Processor v{__version__}")
     print(f"  Files:    {len(files)}")
     print(f"  fs:       {args.fs} Hz")
     print(f"  Nrec:     {args.nrec}")
@@ -138,3 +145,4 @@ except ImportError:
 
 if __name__ == "__main__":
     main()
+
