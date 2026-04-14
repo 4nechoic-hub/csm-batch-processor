@@ -1,31 +1,26 @@
 """
 Anomaly Detection Visualisation
 =================================
-Publication-quality plots for anomaly detection results.
-
-All figures follow the unified style in :mod:`csm_processor.style` and are
-designed for journal / portfolio presentation quality.
+Plots for anomaly detection results.
 """
 
-import numpy as np
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 from typing import Optional
+
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+import numpy as np
 
 from .anomaly_detection import AnomalyResult
 from .style import (
-    apply_style,
-    NORMAL_COLOR,
     ANOMALY_COLOR,
-    THRESHOLD_COLOR,
+    CATEGORY_COLORS,
     CHANNEL_COLORS,
+    NORMAL_COLOR,
+    THRESHOLD_COLOR,
+    apply_style,
+    categorical_cmap,
     get_channel_color,
     get_feature_category,
-    CATEGORY_COLORS,
-    categorical_cmap,
 )
 
 

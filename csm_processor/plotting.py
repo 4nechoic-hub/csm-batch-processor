@@ -1,20 +1,13 @@
 """
 Plotting Utilities
 ===================
-Publication-quality spectral, correlation, and matrix plots using Matplotlib.
-
-Styling follows the unified configuration in :mod:`csm_processor.style`,
-inspired by the clean scientific aesthetic of the `Acoular
-<https://www.acoular.org/auto_examples/>`_ example gallery.
+Spectral, correlation, and matrix plots using Matplotlib.
 """
 
 from typing import Optional
 
-import numpy as np
-import matplotlib
-
-matplotlib.use("Agg")  # non-interactive backend
 import matplotlib.pyplot as plt
+import numpy as np
 
 from .style import apply_style, get_channel_color
 
