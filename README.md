@@ -1,5 +1,5 @@
 # CSM Batch Processor
-
+![CSM Batch Processor hero](assets/hero_banner.png)
 [![CI](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
@@ -35,6 +35,14 @@ pip install -e ".[tdms]"
 # Everything
 pip install -e ".[all]"
 ```
+
+## Browser Demo
+A standalone browser demo lives in `web-demo/`.
+```bash
+cd web-demo
+npm install
+npm run dev
+
 
 ## Quick Start
 
