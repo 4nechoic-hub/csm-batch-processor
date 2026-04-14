@@ -1,22 +1,6 @@
-"""
-CSM Batch Processor — Python Edition
-=====================================
-Cross-Spectral Matrix calculator and spectral analysis toolkit.
-
-Designed by TZ.
-Supports CSV, MAT, and TDMS input formats.
-
-Features:
-  - Narrowband CSM computation (Welch-style block averaging with Hanning window)
-  - Octave-band / fractional-octave binning
-  - Auto- and cross-correlation
-  - Spectral visualisation helpers
-  - ML-ready feature extraction from spectral data
-  - Unsupervised anomaly detection (Isolation Forest, Mahalanobis, LOF)
-"""
-
+from ._version import __version__
 from .csm_calculator import csm_calculator
-from .log_binning import log_freq_bin
+from .log_binning import log_freq_bin, bin_csm
 from .correlation import compute_correlation
 from .io_utils import load_data, save_results
 from .feature_extraction import extract_features, extract_features_batch
@@ -37,11 +21,11 @@ from .anomaly_plotting import (
     plot_detection_summary,
 )
 
-from ._version import __version__
 __all__ = [
     "__version__",
     "csm_calculator",
     "log_freq_bin",
+    "bin_csm",
     "compute_correlation",
     "load_data",
     "save_results",

@@ -55,10 +55,13 @@ fig.savefig("autospectra.png", dpi=200)
 ### Octave-Band Binning
 
 ```python
-from csm_processor.log_binning import bin_csm
+from csm_processor import bin_csm
 
-df = 51200 / 4096  # = 12.5 Hz
+df = 51200 / 4096
 freq_binned, spectra_binned = bin_csm(df, spectra, bins_per_octave=3)
+# For a single 1-D spectrum instead of a full CSM:
+from csm_processor import log_freq_bin
+freq_binned, psd_binned = log_freq_bin(df, psd, bins_per_octave=3)
 ```
 
 ### Correlation
@@ -236,7 +239,7 @@ The algorithm follows Welch's method:
 pytest tests/ -v
 ```
 
-43 tests covering CSM computation, feature extraction, anomaly detection, I/O, and edge cases. CI runs automatically on every push via GitHub Actions across Python 3.10–3.13.
+48 tests covering CSM computation, feature extraction, anomaly detection, I/O, and edge cases. CI runs automatically on every push via GitHub Actions across Python 3.10–3.13.
 
 ## Output Format
 
