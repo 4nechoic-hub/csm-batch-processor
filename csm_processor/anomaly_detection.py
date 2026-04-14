@@ -208,12 +208,10 @@ class SpectralAnomalyDetector:
 
     def _predict_isolation_forest(self, X: np.ndarray) -> AnomalyResult:
         raw_scores = self._model.decision_function(X)
-        # Invert so higher = more anomalous
         scores = -raw_scores
         labels = self._model.predict(X)
-        threshold = -self._model.offset_
+        threshold = 0.0
 
-        # Feature importances via mean absolute depth contribution
         importances = None
         if hasattr(self._model, "feature_importances_"):
             importances = self._model.feature_importances_
@@ -274,7 +272,7 @@ class SpectralAnomalyDetector:
         raw_scores = self._model.decision_function(X)
         scores = -raw_scores
         labels = self._model.predict(X)
-        threshold = -self._model.offset_
+        threshold = 0.0
 
         return AnomalyResult(
             scores=scores,
