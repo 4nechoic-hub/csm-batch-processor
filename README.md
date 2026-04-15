@@ -5,6 +5,7 @@
 [![CI](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+[![Live Demo](https://img.shields.io/badge/demo-live-2ea44f)](4nechoic-hub.github.io/csm-batch-processor/)
 
 Cross-spectral matrix toolkit for turning multichannel recordings into actionable monitoring signals.
 
