@@ -206,15 +206,17 @@ python examples/anomaly_demo.py
 
 ```bash
 # Single file
-python -m csm_processor data.csv --fs 51200 --nrec 4096 --overlap 50 --plot
+csm-processor data.csv --fs 51200 --nrec 4096 --overlap 50 --plot
 
 # Batch with binning
-python -m csm_processor *.tdms --fs 51200 --nrec 4096 \
-    --bin --bpo 3 --correlation --plot --outdir results/
+csm-processor *.tdms --fs 51200 --nrec 4096 \
+  --bin --bpo 3 --correlation --plot --outdir results/
 
 # Save as .mat compatible format
-python -m csm_processor data.csv --fs 51200 --nrec 4096 --fmt mat
-```
+csm-processor data.csv --fs 51200 --nrec 4096 --fmt mat
+
+# Alternate entry point
+python -m csm_processor data.csv --fs 51200 --nrec 4096 --plot
 
 ## Architecture
 
@@ -250,7 +252,7 @@ The algorithm follows Welch's method:
 pytest tests/ -v
 ```
 
-48 tests covering CSM computation, feature extraction, anomaly detection, I/O, and edge cases. CI runs automatically on every push via GitHub Actions across Python 3.10–3.13.
+52 tests covering CSM computation, feature extraction, anomaly detection, I/O, and edge cases. CI runs automatically on every push via GitHub Actions across Python 3.10–3.13.
 
 ## Output Format
 
