@@ -1,5 +1,5 @@
-# CSM Batch Processor
 ![CSM Batch Processor hero](assets/hero_banner.png)
+# CSM Batch Processor
 [![CI](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml/badge.svg)](https://github.com/4nechoic-hub/csm-batch-processor/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
@@ -22,7 +22,8 @@ A Python package for computing narrowband cross-spectral matrices from multi-cha
 | **Visualisation** | Publication-quality spectral, coherence, correlation, CSM matrix, and anomaly plots (Acoular-inspired style) |
 | **Multi-format I/O** | Reads CSV, `.mat` (v5–v7.3), and NI TDMS files |
 | **Batch CLI** | Process multiple files from the command line |
-| **React GUI** | Interactive browser-based demo for quick analysis |
+| **Browser demo** | Standalone React/Vite demo in `web-demo/` for quick interactive exploration |
+ 
 
 ## Installation
 
@@ -37,7 +38,9 @@ pip install -e ".[all]"
 ```
 
 ## Browser Demo
+
 A standalone browser demo lives in `web-demo/`.
+
 ```bash
 cd web-demo
 npm install
