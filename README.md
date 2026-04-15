@@ -6,21 +6,18 @@
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
-Cross-spectral matrix spectral-analysis toolkit with anomaly detection and a browser demo.
+Cross-spectral matrix toolkit for turning multichannel recordings into actionable monitoring signals.
 
-CSM Batch Processor is a portfolio project built around a practical signal-processing workflow: load multichannel recordings, compute Welch-style cross-spectral matrices, extract ML-ready spectral features, and flag off-nominal conditions with unsupervised anomaly detection. It is aimed at aeroacoustic monitoring, structural health assessment, and any application where changes in spectral structure carry diagnostic value.
+CSM Batch Processor is a portfolio project built around a real signal-processing workflow: ingest multichannel CSV, MAT, or TDMS recordings, compute Welch-style cross-spectral matrices, extract spectral features, and flag off-nominal conditions with unsupervised anomaly detection. It is designed for aeroacoustics, structural monitoring, and other applications where changes in spectral structure matter.
 
-## Why this project is interesting
+## What this repo demonstrates
 
-This project is more than a single algorithm demo. It combines:
+- **Reusable scientific Python package** for CSM computation, binning, correlation, plotting, and feature extraction
+- **Batch CLI workflow** for repeatable one-file or many-file analysis
+- **End-to-end anomaly pipeline** from spectral measurements to engineered features to unsupervised detection
+- **Live demo:** use the Website link in the About box to try the browser demo.
 
-- a reusable Python package for signal processing
-- a batch CLI for repeatable analysis workflows
-- scientific plotting for spectra, coherence, correlation, and anomaly interpretation
-- an end-to-end feature-extraction and anomaly-detection pipeline
-- a separate browser demo in `web-demo/` for portfolio presentation
-
-That combination makes it a stronger engineering portfolio piece than a notebook-only prototype.
+This is not a notebook-only prototype. It is a packaged, testable workflow that combines signal processing, feature engineering, anomaly detection, and visualization in one coherent project.
 
 ## Features
 
